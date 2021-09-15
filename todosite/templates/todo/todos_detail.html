@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Списки дел
+{% endblock %}
+
+{% block content %}
+<h1 class="mt-5">{{object_list.0.todo}}</h1>
+
+<div class="input-group mb-3">
+    <input type="text" class="form-control" placeholder="Введите задачу..." aria-label="Введите задачу...">
+    <div class="input-group-append">
+        <button class="btn btn-outline-primary" type="button" id="button-addon2">добавить</button>
+    </div>
+</div>
+
+<div style="font-size: 20px;">
+    {% for item in object_list %}
+    <div class="mb-2">
+        {% if item.is_checked %}
+        <div class="d-flex justify-content-between">
+            <span><input type="checkbox" name="" checked> <s>{{item.title}}</s></span>
+            <button type="button" class="btn btn-danger btn-sm">удалить</button>
+        </div>
+        {% else %}
+        <div class="d-flex justify-content-between">
+            <span><input type="checkbox" name=""> {{item.title}}</span>
+            <button type="button" class="btn btn-danger btn-sm">удалить</button>
+        </div>
+        {% endif %}
+    </div>
+    {% endfor %}
+</div>
+
+<div class="mt-2">
+    <button type="button" class="btn btn-primary">Сохранить</button>
+    <button type="button" class="btn btn-secondary">Скрывать выполненные</button>
+    <button type="button" class="btn btn-danger">Удалить список</button>
+</div>
+
+
+{% endblock %}

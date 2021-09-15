@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Списки дел
+{% endblock %}
+
+{% block content %}
+    <h1 class="mt-5">Todos</h1>
+    <ul>
+        {% for item in object_list %}
+        <li><a href="todo/{{item.id}}">{{item.title}}</a></li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}
